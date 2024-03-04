@@ -1,0 +1,15 @@
+import requests
+response = requests.get("https://randomfox.ca/floof")
+#print(response.status_code)
+fox = response.json()
+#print(fox)
+
+def currency_converter():
+    from_currency=str(input("Enter the currency you want to convert from").upper())
+    to_currency = str(input("Enter the currency you want to convert to").upper())
+    amount=float(input("Enter amount"))
+
+    response=requests.get(f"https://api.frankfurter.app/latest?amount={amount}&from={from_currency}&to={to_currency}")
+    print(amount,from_currency,"in",to_currency,"is",response.json()['rates'][to_currency])
+
+currency_converter()
